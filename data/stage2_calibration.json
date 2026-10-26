@@ -1,0 +1,41 @@
+{
+  "source": "CrossCheck_Daily_Data.csv, real fit, 2026-09-02",
+  "n_consecutive_pairs_used": 6079,
+  "n_subjects_with_ema": 78,
+  "population_mu": 7.750041125185064,
+  "ar1_persistence_b": 0.8547855693363786,
+  "reversion": 0.14521443066362139,
+  "noise_std": 3.0174514398393137,
+  "gap_vs_abschange_corr": 0.030123499859788367,
+  "gap_vs_abschange_pvalue": 0.01883820494556276,
+  "unobserved_extra_noise_std_per_day": 0.0678839759392876,
+  "groups": [
+    {
+      "name": "low_baseline",
+      "weight": 0.3333333333333333,
+      "mu": 0.6698237857704579,
+      "reversion": 0.14521443066362139,
+      "noise_std": 3.0174514398393137,
+      "unobserved_extra_noise_std": 0.0678839759392876,
+      "subject_std": 1.811842592745089
+    },
+    {
+      "name": "mid_baseline",
+      "weight": 0.3333333333333333,
+      "mu": 6.8347436691984305,
+      "reversion": 0.14521443066362139,
+      "noise_std": 3.0174514398393137,
+      "unobserved_extra_noise_std": 0.0678839759392876,
+      "subject_std": 1.277510945300482
+    },
+    {
+      "name": "high_baseline",
+      "weight": 0.3333333333333333,
+      "mu": 12.109658490143278,
+      "reversion": 0.14521443066362139,
+      "noise_std": 3.0174514398393137,
+      "unobserved_extra_noise_std": 0.0678839759392876,
+      "subject_std": 2.0535013795183117
+    }
+  ]
+}

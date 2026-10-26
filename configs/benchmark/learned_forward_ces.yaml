@@ -1,0 +1,33 @@
+experiment_id: learned_forward_ces
+benchmark_version: 0.3.0
+seed: 20261018
+data:
+  source: ces
+  local_root: data/raw/ces
+  min_ema: 20
+  align: calendar
+  horizon: null
+outcome:
+  name: observed_self_report_threshold_crossing
+  threshold: -9.0
+  horizon_days: 3
+split:
+  type: within_participant_future_time
+  train_quantile: 0.6
+model:
+  name: hist_gradient_boosting
+  max_depth: 3
+  max_iter: 150
+  learning_rate: 0.05
+  min_samples_leaf: 20
+  l2_regularization: 1.0
+models: [last, ema6, learned]
+comparisons:
+  - [learned, last]
+  - [learned, ema6]
+  - [ema6, last]
+budgets: [3, 5, 10]
+inference:
+  method: full_panel_queue_rebuilding_participant_bootstrap
+  n_boot: 1000
+  tie_salts: 10

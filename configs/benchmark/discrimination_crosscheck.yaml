@@ -1,0 +1,20 @@
+experiment_id: discrimination_crosscheck
+benchmark_version: 0.3.0
+seed: 20261018
+data:
+  source: crosscheck
+  local_root: data/raw/crosscheck
+  min_ema: 20
+  align: calendar
+  horizon: null
+outcome:
+  name: observed_self_report_threshold_crossing
+  threshold: -5.0
+  horizon_days: 3
+control:
+  source_score: last
+  budget: 3
+  swaps_per_day: [1, 2, 3]
+inference:
+  method: full_panel_queue_rebuilding_participant_bootstrap
+  n_boot: 1000

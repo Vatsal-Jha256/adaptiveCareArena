@@ -1,0 +1,23 @@
+# Attention allocation over real CES trajectories with the tuned
+# Kalman/local-level estimator instead of the fixed-alpha EMA. (q, r)
+# selected via one-step-ahead prediction MAE,
+# scripts/kalman_tune_noise.py --dataset ces. Identical in every other
+# respect to configs/dev/replay_ces.yaml so results are directly
+# comparable cell-for-cell against the EMA world model.
+experiment_id: replay_ces_kalman
+seed: 0
+data:
+  source: ces
+  local_root: data/raw/ces
+  min_ema: 20
+  align: relative
+  horizon: 270
+budget:
+  b_per_round: 5
+estimator:
+  name: kalman_need
+  params:
+    q: 0.1
+    r: 0.25
+restrict_to_available: true
+deterioration_threshold: -9.0

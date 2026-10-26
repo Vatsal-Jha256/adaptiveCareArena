@@ -1,0 +1,19 @@
+experiment_id: composition_crosscheck_greedy
+benchmark_version: 0.3.0
+seed: 20261018
+data:
+  source: crosscheck
+  local_root: data/raw/crosscheck
+outcome:
+  name: observed_self_report_threshold_crossing
+  threshold: -5.0
+  horizon_days: 3
+measurement_budgets: [1, 3, 5, full]
+review_budgets: [3, 5, 10]
+calibration:
+  method: participant_cross_fitted_ridge
+  n_folds: 5
+  ridge_alpha: 1.0
+inference:
+  method: full_panel_queue_rebuilding_participant_bootstrap
+  n_boot: 1000

@@ -1,0 +1,16 @@
+# Item selection on the CES cohort -- the independent-cohort replication
+# of the CrossCheck emaselect experiment. Four PHQ-4 items rather than
+# ten signed EMA items; everything else identical.
+experiment_id: emaselect_ces
+seed: 0
+target_mode: forecast
+dataset:
+  name: ces
+  local_root: data/raw/ces
+  min_ema: 20
+split:
+  n_train: 140
+  n_val: 30
+budgets: [1.0, 2.0, 3.0]
+burden_profiles: [uniform, sensitivity_weighted, inverted_sensitivity]
+selective_prediction: false

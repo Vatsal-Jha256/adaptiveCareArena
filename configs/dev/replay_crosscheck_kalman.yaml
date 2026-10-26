@@ -1,0 +1,24 @@
+# Attention allocation over real CrossCheck trajectories with the
+# tuned Kalman/local-level estimator (stage2_env/estimators.py) instead
+# of the fixed-alpha EMA. (q, r) selected via one-step-ahead prediction
+# MAE, scripts/kalman_tune_noise.py --dataset crosscheck (never via this
+# environment's own deployment-time metrics). Identical in every other
+# respect to configs/dev/replay_crosscheck.yaml so results are directly
+# comparable cell-for-cell against the EMA world model.
+experiment_id: replay_crosscheck_kalman
+seed: 0
+data:
+  source: crosscheck
+  local_root: data/raw/crosscheck
+  min_ema: 20
+  align: relative
+  horizon: 270
+budget:
+  b_per_round: 5
+estimator:
+  name: kalman_need
+  params:
+    q: 0.02
+    r: 0.25
+restrict_to_available: true
+deterioration_threshold: -5.0

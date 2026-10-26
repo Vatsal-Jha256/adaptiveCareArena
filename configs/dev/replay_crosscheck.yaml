@@ -1,0 +1,15 @@
+# Attention allocation over REAL CrossCheck trajectories.
+experiment_id: replay_crosscheck
+seed: 0
+data:
+  source: crosscheck
+  local_root: data/raw/crosscheck
+  min_ema: 20
+  align: relative
+  horizon: 270
+budget:
+  b_per_round: 5
+estimator:
+  name: naive_ema
+restrict_to_available: true
+deterioration_threshold: -5.0

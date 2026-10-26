@@ -1,0 +1,18 @@
+# Attention allocation over REAL CES (College Experience Study) trajectories.
+# Second, independent cohort for the same CrossCheckReview-v0 environment
+# and metrics -- see stage2_env/replay_data_ces.py for the sign-convention
+# and threshold notes that make this comparable rather than identical.
+experiment_id: replay_ces
+seed: 0
+data:
+  source: ces
+  local_root: data/raw/ces
+  min_ema: 20
+  align: relative
+  horizon: 270
+budget:
+  b_per_round: 5
+estimator:
+  name: naive_ema
+restrict_to_available: true
+deterioration_threshold: -9.0

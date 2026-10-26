@@ -1,0 +1,27 @@
+# CES item selection on a budget grid MATCHED BY FRACTION to the
+# CrossCheck run, so the two cohorts can be compared cell by cell.
+#
+# Absolute budgets are not comparable across these two instruments:
+# CrossCheck offers 10 EMA items, CES offers 4 PHQ-4 items, so "budget
+# 10" is ask-everything in one cohort and unreachable in the other.
+# Comparing them at equal ABSOLUTE budget silently compares "asked 20%
+# of what you could" against "asked 100% of what you could".
+#
+# CrossCheck grid [0, 2, 4, 6, 10] over 10 items is the fraction grid
+# [0.0, 0.2, 0.4, 0.6, 1.0] of ask-everything. The same fractions over
+# CES's 4 items are the budgets below. 0.0 is dropped: at zero budget
+# every policy asks nothing and the comparison is degenerate by
+# construction (the cross-cohort script excludes such cells anyway).
+experiment_id: emaselect_ces_matched
+seed: 0
+target_mode: forecast
+dataset:
+  name: ces
+  local_root: data/raw/ces
+  min_ema: 20
+split:
+  n_train: 140
+  n_val: 30
+budgets: [0.8, 1.6, 2.4, 4.0]
+burden_profiles: [uniform, sensitivity_weighted, inverted_sensitivity]
+selective_prediction: false

@@ -1,0 +1,11 @@
+# Item-selection under patient burden, real CrossCheck.
+experiment_id: emaselect_smoke
+seed: 0
+target_mode: forecast
+dataset:
+  local_root: data/raw/crosscheck
+split:
+  n_train: 48
+  n_val: 12
+budgets: [0.0, 2.0, 4.0, 6.0, 10.0]
+burden_profiles: [uniform, sensitivity_weighted, inverted_sensitivity]
